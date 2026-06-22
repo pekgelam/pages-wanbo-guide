@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>万博体育 – 产品介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f4f6f9;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.7;
+            color: #1f2a3a;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0c1424 0%, #1b253b 100%);
+            padding: 4rem 2rem 3.5rem;
+            text-align: center;
+            color: #e8ecf4;
+            box-shadow: inset 0 -1px 0 rgba(255,255,255,0.06);
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.75;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 2.8rem 0 1.2rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #d6dee8;
+            color: #132034;
+        }
+        .section-title:first-of-type {
+            margin-top: 0.2rem;
+        }
+        .highlight-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.8rem 0 2rem;
+        }
+        .highlight-card {
+            flex: 1 1 240px;
+            background: white;
+            border-radius: 16px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid #eef1f5;
+            transition: box-shadow 0.2s;
+        }
+        .highlight-card:hover {
+            box-shadow: 0 8px 20px rgba(18, 52, 77, 0.06);
+        }
+        .highlight-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1d2f47;
+            margin-bottom: 0.6rem;
+        }
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: #33455e;
+            line-height: 1.6;
+        }
+        .intro-text {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e7ecf2;
+        }
+        .intro-text p {
+            margin-bottom: 1rem;
+        }
+        .use-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.2rem 0 1.8rem;
+        }
+        .use-list li {
+            position: relative;
+            padding: 0.7rem 0 0.7rem 1.8rem;
+            border-bottom: 1px solid #eef2f6;
+            font-size: 1rem;
+        }
+        .use-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #1a5b8c;
+            font-weight: 600;
+        }
+        .faq-mini {
+            background: #e9edf4;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin: 2.4rem 0 1.6rem;
+        }
+        .faq-mini h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            color: #0f1f31;
+        }
+        .faq-mini details {
+            margin: 0.8rem 0;
+            padding: 0.2rem 0;
+        }
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #1c3b5a;
+            padding: 0.3rem 0;
+        }
+        .faq-mini summary::-webkit-details-marker {
+            color: #1a5b8c;
+        }
+        .faq-mini p {
+            margin-top: 0.4rem;
+            padding-left: 0.3rem;
+            color: #2b3d55;
+        }
+        .link-inline {
+            color: #0a5688;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .link-inline:hover {
+            border-bottom-color: #0a5688;
+            color: #04355a;
+        }
+        .notice-box {
+            background: #edf2f9;
+            border-left: 4px solid #175a84;
+            padding: 1.2rem 1.6rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2.2rem 0 0.8rem;
+            font-size: 0.95rem;
+            color: #1c3047;
+        }
+        .notice-box strong {
+            color: #0f2842;
+        }
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5b6c82;
+            padding: 2rem 0 0.5rem;
+            border-top: 1px solid #dce2ea;
+            margin-top: 3rem;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .sub { font-size: 1rem; }
+            .container { padding: 1.8rem 1rem; }
+            .highlight-grid { flex-direction: column; }
+            .intro-text { padding: 1.5rem; }
+            .faq-mini { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>万博体育</h1>
+    <div class="sub">产品概述 · 使用场景 · 功能亮点 · 快速识别手册</div>
+</section>
+
+<div class="container">
+
+    <!-- 摘要 / 用途说明 -->
+    <div class="intro-text">
+        <p>如果你第一次打开 <strong>万博体育</strong> 的页面，最直接的问题是：“这个网站是做什么的？” 简单来说，这是一个围绕体育赛事信息、数据浏览与分类展示的综合型平台，面向希望快速检索体育项目、查看基础赛事动态的用户。整个页面结构以内容整理和导航为主，不涉及任何资金交易、竞猜或下注功能。</p>
+        <p>以下内容帮助你从零开始了解 <a href="https://pages-wanbo.com" class="link-inline">万博体育</a> 的实际用途，以及哪些场景下你会用到它。</p>
+    </div>
+
+    <!-- 核心功能亮点 -->
+    <h2 class="section-title">产品亮点</h2>
+    <div class="highlight-grid">
+        <div class="highlight-card">
+            <h3>快速浏览结构</h3>
+            <p>页面采用卡片 + 列表布局，体育项目分类清晰，无需频繁点击即可获取概要信息，适合碎片化浏览。</p>
+        </div>
+        <div class="highlight-card">
+            <h3>多赛种覆盖</h3>
+            <p>涵盖足球、篮球、网球、电子竞技等多个常见赛种，并提供基础数据呈现，减少在不同页面间跳转。</p>
+        </div>
+        <div class="highlight-card">
+            <h3>低认知门槛</h3>
+            <p>界面文字以中文为主，术语较少，新用户可在一分钟内理解页面信息结构，无需额外学习成本。</p>
+        </div>
+        <div class="highlight-card">
+            <h3>响应式适配</h3>
+            <p>移动端与桌面端均可获得接近的浏览体验，随时随地方便查看赛事信息与分类目录。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 / 场景 -->
+    <h2 class="section-title">使用建议与典型场景</h2>
+    <ul class="use-list">
+        <li><strong>赛事信息查阅：</strong>当你需要快速了解某类体育项目的基础信息（如联赛名称、队伍对阵、比赛阶段），可以打开 <a href="https://pages-wanbo.com" class="link-inline">万博体育</a> 找到对应分类卡片。</li>
+        <li><strong>多赛事对比：</strong>同时关注多个体育项目时，利用首页的分类模块横向切换，避免反复搜索。</li>
+        <li><strong>新手了解体育赛事：</strong>如果你刚接触体育观赏，想认识不同赛事种类和常规赛制，本页作为起点较为合适。</li>
+        <li><strong>作为入口：</strong>平台本身整理了大量体育相关链接与导航，适合作为日常体育信息浏览的启动页。</li>
+    </ul>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h3>常见疑问 · 简要说明</h3>
+        <details>
+            <summary>万博体育是否包含即时比分或直播功能？</summary>
+            <p>当前页面以静态信息展示和分类为主，不提供实时比分或流媒体直播。建议查询专业数据平台获取实时动态。</p>
+        </details>
+        <details>
+            <summary>是否需要注册账户才能使用？</summary>
+            <p>不需要。所有页面内容均可直接浏览，无需登录或注册。平台不收集个人信息，也不提供用户系统。</p>
+        </details>
+        <details>
+            <summary>移动端显示是否完整？</summary>
+            <p>页面已自动适配手机屏幕，所有卡片和文字均可正常阅读。若遇到排版问题，可以尝试横屏或更新浏览器。</p>
+        </details>
+        <details>
+            <summary>内容更新频率如何？</summary>
+            <p>赛事数据与分类信息会根据运营安排定期整理更新，但本页不承诺实时刷新，适合一般性参考。</p>
+        </details>
+    </div>
+
+    <!-- 可信而克制的说明 -->
+    <div class="notice-box">
+        <strong>使用说明：</strong> 本页面仅用于产品介绍与信息导航，<a href="https://pages-wanbo.com" class="link-inline">万博体育</a> 不提供任何形式的博彩、投注、现金交易或虚拟资产服务。页面内的赛事数据均来自公开整理，不保证绝对时效性，请以官方渠道为准。请合理使用，遵守当地法律法规。
+    </div>
+
+    <div class="footer-note">
+        — 简要介绍页 · 基于产品说明视角 —
+    </div>
+
+</div>
+
+</body>
+</html>
