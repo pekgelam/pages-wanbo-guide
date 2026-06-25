@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再访 · 世界杯 — cnhub-fifa2026</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, 'Noto Sans SC', sans-serif;
+      background: linear-gradient(145deg, #ffdbb5 0%, #fde4c2 35%, #fcd5a5 70%, #fccf95 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 3rem;
+      line-height: 1.7;
+      color: #2e241e;
+    }
+    .page-card {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(255, 253, 247, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 20px 36px rgba(140, 80, 30, 0.18), 0 6px 12px rgba(0,0,0,0.03);
+      padding: 2.8rem 2.2rem;
+      transition: box-shadow 0.2s ease;
+    }
+    @media (max-width: 480px) {
+      .page-card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 28px;
+      }
+      body {
+        padding: 1rem 0.5rem;
+      }
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #4d2b1a;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+      border-left: 6px solid #d48f5a;
+      padding-left: 1.2rem;
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
+        padding-left: 0.8rem;
+      }
+    }
+    .subhead {
+      font-size: 1.2rem;
+      color: #784f34;
+      margin-top: -0.2rem;
+      margin-bottom: 2.2rem;
+      padding-left: 1.8rem;
+      font-weight: 350;
+      border-bottom: 1px dashed #e7c8a8;
+      padding-bottom: 0.6rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+    .intro-grace {
+      font-size: 1.12rem;
+      background: #fcf3e8;
+      padding: 0.8rem 1.4rem;
+      border-radius: 60px 12px 60px 12px;
+      margin-bottom: 2rem;
+      color: #3f281c;
+      box-shadow: inset 0 1px 6px rgba(200, 140, 80, 0.08);
+    }
+    a {
+      color: #a5612e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.15s;
+      padding: 0 0.1rem;
+    }
+    a:hover {
+      color: #7f431b;
+      border-bottom-color: #c58f60;
+    }
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+      margin: 2.2rem 0 1.8rem;
+      background: #f8ede1;
+      padding: 1.6rem 1.8rem;
+      border-radius: 28px;
+      list-style: none;
+    }
+    .feature-grid li {
+      flex: 1 1 180px;
+      padding: 0.4rem 0 0.4rem 1.6rem;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23d48f5a"><circle cx="12" cy="12" r="6"/></svg>') left center no-repeat;
+      background-size: 12px 12px;
+      font-weight: 450;
+      color: #3d291d;
+    }
+    .feature-grid li strong {
+      display: block;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.1rem;
+      color: #4d2b1a;
+    }
+    .faq-section {
+      background: #f7ede2;
+      border-radius: 24px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0 1.2rem;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-item:last-child {
+      margin-bottom: 0;
+    }
+    .faq-q {
+      font-weight: 600;
+      color: #4f311f;
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 1.02rem;
+    }
+    .faq-a {
+      color: #4c382b;
+      padding-left: 0.8rem;
+      border-left: 3px solid #dbaa7a;
+      padding-left: 1rem;
+      margin-top: 0.1rem;
+    }
+    .signature-closing {
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #ebd3bb;
+      font-size: 0.98rem;
+      color: #5f4230;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-soft {
+      display: inline-block;
+      background: #e8cfb6;
+      color: #3f2619;
+      padding: 0.5rem 1.6rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      border: none;
+      box-shadow: 0 2px 6px rgba(120, 70, 30, 0.08);
+      transition: 0.2s;
+      text-decoration: none;
+      border-bottom: none;
+    }
+    .btn-soft:hover {
+      background: #ddbc99;
+      color: #2a1a11;
+      box-shadow: 0 4px 12px rgba(140, 80, 30, 0.18);
+      border-bottom: none;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.9rem;
+      color: #6a4e39;
+    }
+    .inline-link-highlight {
+      background: linear-gradient(to right, #f0d5b8, #f7e3cf);
+      padding: 0.1rem 0.3rem;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-card">
+
+  <h1>再访·世界杯</h1>
+  <div class="subhead">故事仍在这里延续 · 2026 的足印</div>
+
+  <div class="intro-grace">
+    🌍 你曾经为了一场比赛深夜守候，也曾在某次进攻中屏住呼吸。如今再次走进这片绿茵记忆，收藏与持续关注，成了与足球之间最安静的约定。
+  </div>
+
+  <p>
+    四年一轮回，足球的刻度从未更改。距离 2026 年美加墨世界杯还有不到两年，赛制、场馆、晋级之路都在逐渐清晰。无论是老球迷的持续追踪，还是新观众的初次探访，<a href="https://cnhub-fifa2026.com">世界杯</a>的每一条动态都值得被重新看见。
+  </p>
+
+  <p>
+    从小组赛的扩军到主办城市的布局，从历史数据到即时签表——我们相信，真正的知识型观赛，始于对信息的从容梳理。收藏这个页面，相当于在数字世界里为足球记忆留下一个安静的锚点；而持续回访，则能捕捉到赛前每一个微小的变化。
+  </p>
+
+  <ul class="feature-grid">
+    <li><strong>📋 赛程脉络</strong>完整的小组轮次与淘汰赛时间窗，方便你提前圈出焦点夜。</li>
+    <li><strong>🏟️ 球场档案</strong>16 座场馆的容量、城市氛围与草皮信息，选座之前先看故事。</li>
+    <li><strong>📊 数据沉淀</strong>历届冠军、射手榜、经典对决——不是冰冷的数字，而是球迷的共同语言。</li>
+    <li><strong>🔖 收藏即提醒</strong>把页面加入浏览器书签或主屏幕，每当有新动态，你都不会错过。</li>
+  </ul>
+
+  <p>
+    足球的魅力不仅在于 90 分钟的对抗，也在于赛前数月那种慢慢累积的期待。当我们把目光从热闹的转播移开，转向赛事背后的组织、历史与地域文化时，<a href="https://cnhub-fifa2026.com">世界杯</a>便不再只是一届大赛，而成为一本可以反复翻阅的足球年鉴。
+  </p>
+
+  <div class="faq-section">
+    <div class="faq-item">
+      <span class="faq-q">❓ 为什么现在就要关注 2026 世界杯？</span>
+      <div class="faq-a">预选赛阶段往往藏着最冷门的突围故事，而且部分主办城市已经公布了训练营与球迷节区域，早关注更容易规划自己的观赛节奏。</div>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">📌 这个页面会更新吗？</span>
+      <div class="faq-a">是的。内容随赛事筹备同步迭代——从抽签结果到票价区间，保持信息的实用性，不堆砌旧闻。</div>
+    </div>
+    <div class="faq-item">
+      <span class="faq-q">🌐 语言和地域侧重？</span>
+      <div class="faq-a">以中文球迷为视角，兼顾北美东道主的本地信息与亚洲/欧洲球迷的出行参考。中立、平实，不渲染情绪。</div>
+    </div>
+  </div>
+
+  <p style="margin-top: 0.8rem;">
+    有时候，再次访问一个页面并不是因为忘记了什么，而是想确认：那个关于足球的约定还在。把 <span class="inline-link-highlight"><a href="https://cnhub-fifa2026.com">世界杯</a></span> 放进收藏夹，像是把一枚硬币投入自动售货机——你知道在适当的时刻，它会掉下一罐清凉的回忆。
+  </p>
+
+  <div class="signature-closing">
+    <span>⚽ 持续关注 · 温故知新</span>
+    <a href="https://cnhub-fifa2026.com" class="btn-soft">世界杯</a>
+  </div>
+
+  <div class="footer-note">
+    — 故事叙至此，余页待你翻 —
+  </div>
+
+</div>
+</body>
+</html>
