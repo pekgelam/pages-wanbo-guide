@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 资料索引 · 再次访问</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fcede4 0%, #f5d8c6 50%, #ecc4ae 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .card-wrapper {
+      max-width: 1120px;
+      width: 100%;
+      background: rgba(255, 252, 248, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 3rem 3rem 2.5rem 2.5rem;
+      box-shadow: 0 20px 40px -12px rgba(140, 70, 40, 0.3), 0 4px 20px rgba(0, 0, 0, 0.06);
+      padding: 2.5rem 2.8rem 3.2rem;
+    }
+
+    /* 标题区 — 目录感 */
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2.2rem;
+      border-bottom: 2px solid #edcbb8;
+      padding-bottom: 1.2rem;
+    }
+
+    .page-header h1 {
+      font-size: 2.2rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      color: #5f3a28;
+      background: linear-gradient(to right, #743f26, #9b5f40);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-header .sub {
+      color: #7f5b44;
+      font-size: 0.95rem;
+      font-weight: 400;
+      background: #f0ddd2;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+    }
+
+    /* 三栏式布局：说明区、提示区、相关信息区 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 1fr;
+      gap: 2rem;
+      margin: 1.8rem 0 2.2rem;
+    }
+
+    .info-card {
+      background: #fffbf9;
+      border-radius: 2rem;
+      padding: 1.8rem 1.6rem 2rem;
+      box-shadow: 0 8px 20px -8px rgba(110, 60, 35, 0.12);
+      transition: box-shadow 0.2s ease;
+      border: 1px solid #f5e3d8;
+    }
+
+    .info-card:hover {
+      box-shadow: 0 12px 28px -10px rgba(130, 70, 40, 0.18);
+    }
+
+    .info-card h2 {
+      font-size: 1.3rem;
+      font-weight: 520;
+      color: #603d2c;
+      margin-bottom: 1rem;
+      display: inline-block;
+      border-left: 5px solid #d9a88b;
+      padding-left: 0.8rem;
+    }
+
+    .info-card p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #3b2a1f;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .info-card ul li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.96rem;
+      color: #3d2b1f;
+    }
+
+    .info-card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0.2rem;
+      color: #b98163;
+      font-size: 1.2rem;
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      background: #f1d9cc;
+      padding: 0.1rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      color: #5a3827;
+      font-weight: 450;
+      margin-right: 0.3rem;
+    }
+
+    .muted-note {
+      color: #7f6a5d;
+      font-size: 0.9rem;
+      border-top: 1px dashed #e3cec2;
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+    }
+
+    /* 句子区 — 嵌入链接 */
+    .context-sentence {
+      background: #f6ede7;
+      border-radius: 40px;
+      padding: 1.1rem 2rem;
+      margin: 1.8rem 0 2rem;
+      font-size: 1.03rem;
+      color: #3b2b20;
+      line-height: 1.7;
+      text-align: center;
+      box-shadow: inset 0 0 0 1px #f5e2d7;
+    }
+
+    .context-sentence a {
+      color: #854f34;
+      font-weight: 550;
+      text-decoration: none;
+      padding: 0.15rem 0.5rem;
+      border-radius: 30px;
+      background: #f5e1d4;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .context-sentence a:hover {
+      background: #dbb8a4;
+      color: #3f281c;
+    }
+
+    /* 更多相关信息 — 卡片式摘要 */
+    .faq-mini-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.8rem;
+      margin: 1.5rem 0 0.5rem;
+      padding: 1.2rem 0.8rem 0.8rem;
+      border-top: 1px solid #eddad0;
+    }
+
+    .faq-item {
+      flex: 1 1 180px;
+      background: #fffbf9;
+      border-radius: 20px;
+      padding: 0.7rem 1rem 0.9rem;
+      border: 1px solid #efdcd1;
+    }
+
+    .faq-item .q {
+      font-weight: 520;
+      color: #4d3325;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.85rem;
+      color: #685545;
+    }
+
+    .faq-item .a a {
+      color: #854f34;
+      text-decoration: underline wavy #d4ad99 1px;
+      text-underline-offset: 3px;
+      font-weight: 450;
+    }
+
+    .section-footer {
+      margin-top: 2.8rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7b6558;
+      border-top: 1px solid #edd9cf;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.3rem 2rem;
+    }
+
+    .section-footer span {
+      opacity: 0.7;
+    }
+
+    /* 响应式 */
+    @media (max-width: 820px) {
+      .card-wrapper {
+        padding: 2rem 1.5rem;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+      }
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .page-header h1 {
+        font-size: 1.9rem;
+      }
+      .context-sentence {
+        padding: 1rem 1.2rem;
+        font-size: 0.97rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .card-wrapper {
+        border-radius: 2rem;
+        padding: 1.5rem 1rem;
+      }
+      .info-card {
+        padding: 1.2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-wrapper">
+    <!-- 目录感 header -->
+    <div class="page-header">
+      <h1>⚽ 世界杯 · 知识库</h1>
+      <div class="sub">再次访问 · 收藏 · 持续关注</div>
+    </div>
+
+    <!-- 三区：说明区 / 提示区 / 相关信息区 -->
+    <div class="info-grid">
+      <!-- 说明区：从再次访问切入 -->
+      <div class="info-card">
+        <h2>📌 说明 · 为何再访</h2>
+        <p>许多资料会随着时间沉淀而更有价值。这里整理的世界杯相关内容并不追求即时新闻，而是作为一份可反复查阅的索引：赛制沿革、历届纪录、队伍风格笔记。如果你曾收藏过这个页面，那么每次重新打开，都会发现一些之前忽略的细节。</p>
+        <p>我们建议你将本页加入浏览器书签，或保存到笔记应用里。它更像一份随时可以翻开的手册，而不是一闪而过的信息流。</p>
+        <div class="muted-note">📖 上次访问留下的批注依然保留在本地</div>
+      </div>
+
+      <!-- 提示区：收藏、持续关注 -->
+      <div class="info-card">
+        <h2>💡 提示 · 收藏与关注</h2>
+        <ul>
+          <li>使用浏览器的「添加到书签」功能，或通过「阅读列表」暂存。</li>
+          <li>页面结构会随赛季周期微调，但核心索引目录保持稳定。</li>
+          <li><span class="highlight-tag">推荐</span> 关注官方渠道的同时，也保留一份自主整理的笔记。</li>
+          <li>可定期回来比对数据口径的变化，例如小组赛出线规则微调。</li>
+        </ul>
+        <p style="margin-top: 0.8rem; font-size: 0.92rem;">—— 保持关注不是追逐每一条消息，而是理解框架的演变。</p>
+      </div>
+
+      <!-- 相关信息区：主题连接 -->
+      <div class="info-card">
+        <h2>🌐 相关信息</h2>
+        <p>以下信息点与本站知识库相互参照：</p>
+        <ul>
+          <li>FIFA 官方档案 · 历届决赛圈数据</li>
+          <li>各参赛协会的发展简报（不定期更新）</li>
+          <li>球场与城市指南 · 东道主视角</li>
+          <li>裁判规则修订摘要 · 近年VAR应用统计</li>
+        </ul>
+        <p style="margin-top: 0.5rem; font-size: 0.88rem;">这些内容不在本页面直接展示，但知识库会提供跳转线索。</p>
+      </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子：必须包含“世界杯”且文本严格等于“世界杯” -->
+    <div class="context-sentence">
+      <span>如果你正在寻找一份可靠且持续维护的世界杯资料索引，不妨将 <a href="https://cnonline-fifa2026.com">世界杯</a> 作为常驻书签。它不追求标题党式的推荐，而是安静地记录着赛事脉络与知识点。</span>
+    </div>
+
+    <!-- FAQ 摘要区（更目录感） -->
+    <div class="faq-mini-wrap">
+      <div class="faq-item">
+        <span class="q">❓ 页面多久更新？</span>
+        <span class="a">大致随国际比赛窗调整，每年 2–3 次内容审核。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">❓ 可以转载分享吗？</span>
+        <span class="a">允许非商业引用，注明来源即可。相关链接指向 <a href="https://cnonline-fifa2026.com">世界杯</a> 知识库。</span>
+      </div>
+      <div class="faq-item">
+        <span class="q">❓ 为什么强调“再次访问”？</span>
+        <span class="a">因为信息需要反复确认；很多细节在第一次浏览时容易被忽略。</span>
+      </div>
+    </div>
+
+    <!-- 底部 quiet 收尾 -->
+    <div class="section-footer">
+      <span>📁 目录索引 · 持续整理中</span>
+      <span>⏳ 上次结构微调：2025年3月</span>
+      <span>📌 建议收藏本页</span>
+    </div>
+  </div>
+</body>
+</html>
